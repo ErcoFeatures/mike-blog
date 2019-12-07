@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "blogapp6f9e3e6e",
+    "functionName": "blogapp6f9e3e6eCustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": "[{\"key\":\"RESOURCENAME\",\"value\":\"resourceName\"}]",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "blogapp6f9e3e6eCustomMessage",
+    "skipEdit": true,
+    "resourceName": "blogapp6f9e3e6eCustomMessage"
+}
