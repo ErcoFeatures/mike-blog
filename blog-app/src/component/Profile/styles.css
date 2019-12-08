@@ -1,0 +1,37 @@
+.user-profile-container .photo{
+    width: 100%;
+    height: 125px;
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+    margin: 10px auto;
+    display: grid;
+    font-size: 120px;
+}
+.user-profile-container .name{
+    font-weight: bold;
+    font-size: 20px;
+}
+.user-profile-container .name, .user-profile-container .function{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    display: grid;
+}
+.user-profile-container  .social-media-list{
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    height: 36px;
+    padding: 5px 0;
+    border-top: 1px solid #c0c0c0;
+    display: flex;
+    margin: 20px 0;
+}
+.user-profile-container  .social-media-list li{
+    display: inline-block;
+    margin: 0 15px;
+    cursor: pointer;
+}
