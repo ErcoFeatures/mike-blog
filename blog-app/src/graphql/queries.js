@@ -5,10 +5,14 @@ export const getBlog = `query GetBlog($id: ID!) {
   getBlog(id: $id) {
     id
     name
+    createdBy
     posts {
       items {
         id
         title
+        description
+        createdBy
+        createdAt
       }
       nextToken
     }
@@ -24,6 +28,7 @@ export const listBlogs = `query ListBlogs(
     items {
       id
       name
+      createdBy
       posts {
         nextToken
       }
@@ -36,9 +41,13 @@ export const getPost = `query GetPost($id: ID!) {
   getPost(id: $id) {
     id
     title
+    description
+    createdBy
+    createdAt
     blog {
       id
       name
+      createdBy
       posts {
         nextToken
       }
@@ -47,6 +56,8 @@ export const getPost = `query GetPost($id: ID!) {
       items {
         id
         content
+        createdAt
+        createdBy
       }
       nextToken
     }
@@ -62,9 +73,13 @@ export const listPosts = `query ListPosts(
     items {
       id
       title
+      description
+      createdBy
+      createdAt
       blog {
         id
         name
+        createdBy
       }
       comments {
         nextToken
@@ -78,12 +93,18 @@ export const getComment = `query GetComment($id: ID!) {
   getComment(id: $id) {
     id
     content
+    createdAt
+    createdBy
     post {
       id
       title
+      description
+      createdBy
+      createdAt
       blog {
         id
         name
+        createdBy
       }
       comments {
         nextToken
@@ -101,9 +122,14 @@ export const listComments = `query ListComments(
     items {
       id
       content
+      createdAt
+      createdBy
       post {
         id
         title
+        description
+        createdBy
+        createdAt
       }
     }
     nextToken

@@ -8,10 +8,14 @@ export const createBlog = `mutation CreateBlog(
   createBlog(input: $input, condition: $condition) {
     id
     name
+    createdBy
     posts {
       items {
         id
         title
+        description
+        createdBy
+        createdAt
       }
       nextToken
     }
@@ -25,10 +29,14 @@ export const updateBlog = `mutation UpdateBlog(
   updateBlog(input: $input, condition: $condition) {
     id
     name
+    createdBy
     posts {
       items {
         id
         title
+        description
+        createdBy
+        createdAt
       }
       nextToken
     }
@@ -42,10 +50,14 @@ export const deleteBlog = `mutation DeleteBlog(
   deleteBlog(input: $input, condition: $condition) {
     id
     name
+    createdBy
     posts {
       items {
         id
         title
+        description
+        createdBy
+        createdAt
       }
       nextToken
     }
@@ -59,9 +71,13 @@ export const createPost = `mutation CreatePost(
   createPost(input: $input, condition: $condition) {
     id
     title
+    description
+    createdBy
+    createdAt
     blog {
       id
       name
+      createdBy
       posts {
         nextToken
       }
@@ -70,6 +86,8 @@ export const createPost = `mutation CreatePost(
       items {
         id
         content
+        createdAt
+        createdBy
       }
       nextToken
     }
@@ -83,9 +101,13 @@ export const updatePost = `mutation UpdatePost(
   updatePost(input: $input, condition: $condition) {
     id
     title
+    description
+    createdBy
+    createdAt
     blog {
       id
       name
+      createdBy
       posts {
         nextToken
       }
@@ -94,6 +116,8 @@ export const updatePost = `mutation UpdatePost(
       items {
         id
         content
+        createdAt
+        createdBy
       }
       nextToken
     }
@@ -107,9 +131,13 @@ export const deletePost = `mutation DeletePost(
   deletePost(input: $input, condition: $condition) {
     id
     title
+    description
+    createdBy
+    createdAt
     blog {
       id
       name
+      createdBy
       posts {
         nextToken
       }
@@ -118,6 +146,8 @@ export const deletePost = `mutation DeletePost(
       items {
         id
         content
+        createdAt
+        createdBy
       }
       nextToken
     }
@@ -131,12 +161,18 @@ export const createComment = `mutation CreateComment(
   createComment(input: $input, condition: $condition) {
     id
     content
+    createdAt
+    createdBy
     post {
       id
       title
+      description
+      createdBy
+      createdAt
       blog {
         id
         name
+        createdBy
       }
       comments {
         nextToken
@@ -152,12 +188,18 @@ export const updateComment = `mutation UpdateComment(
   updateComment(input: $input, condition: $condition) {
     id
     content
+    createdAt
+    createdBy
     post {
       id
       title
+      description
+      createdBy
+      createdAt
       blog {
         id
         name
+        createdBy
       }
       comments {
         nextToken
@@ -173,12 +215,18 @@ export const deleteComment = `mutation DeleteComment(
   deleteComment(input: $input, condition: $condition) {
     id
     content
+    createdAt
+    createdBy
     post {
       id
       title
+      description
+      createdBy
+      createdAt
       blog {
         id
         name
+        createdBy
       }
       comments {
         nextToken

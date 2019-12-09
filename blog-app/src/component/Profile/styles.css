@@ -7,6 +7,7 @@
     margin: 10px auto;
     display: grid;
     font-size: 120px;
+    color: #FFAD47;
 }
 .user-profile-container .name{
     font-weight: bold;

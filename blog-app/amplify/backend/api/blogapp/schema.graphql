@@ -1,16 +1,22 @@
 type Blog @model {
   id: ID!
   name: String!
+  createdBy: String
   posts: [Post] @connection(name: "BlogPosts")
 }
 type Post @model {
   id: ID!
   title: String!
+  description: String
+  createdBy: String
+  createdAt: String
   blog: Blog @connection(name: "BlogPosts")
   comments: [Comment] @connection(name: "PostComments")
 }
 type Comment @model {
   id: ID!
   content: String
+  createdAt: String
+  createdBy: String
   post: Post @connection(name: "PostComments")
 }

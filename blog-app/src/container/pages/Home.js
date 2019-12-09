@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {API, graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
-
+import {Post} from '../../component/Post'
 
 
 class Home  extends Component{
@@ -19,12 +19,13 @@ class Home  extends Component{
             isLoading:true,
         }));
 
-        API.graphql(graphqlOperation(queries.listPosts)).then(list =>{
+        API.graphql(graphqlOperation(queries.listPosts, {limit:5})
+        ).then(list =>{
             if(list.data.listPosts){
                 this.setState (prev =>({
                     ...prev,
                     isLoading:false,
-                    listBlog:list.data.listPosts.items
+                    listPosts:list.data.listPosts.items
                 }));
             }
         })
@@ -38,8 +39,10 @@ class Home  extends Component{
             )
         }
         return (
-            <div className={"list"}>
-
+            <div className={"list-blog"}>
+                {
+                    this.state.listPosts && this.state.listPosts.map(el => <Post {...el}/>)
+                }
             </div>
         )
     }
