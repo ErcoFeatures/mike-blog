@@ -11,10 +11,11 @@ class LeftContent extends Component{
 
     render(){
         const links= [
+            {name:"Home", path:"/"},
             {name:"Sport", path:"sport"},
             {name:"Politics", path:"politics"},
             {name:"Study", path:"study"},
-            {name:"Various", path:"various"},
+            {name:"Various", path:"various"}
         ]
         return(
             <div>
