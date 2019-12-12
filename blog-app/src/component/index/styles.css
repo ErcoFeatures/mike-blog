@@ -1,0 +1,55 @@
+.new-post-modal .bottom-buttons .add{
+    margin-left:20px;
+}
+.new-post-modal .bottom-buttons .cancel{
+
+}
+.new-post-modal .quill{
+    border: 2px solid #d3d3d3;
+}
+.new-post-modal .ql-editor{
+    height: 240px;
+}
+.new-post-modal .title,
+.new-post-modal .description{
+    font-size: 20px;
+    font-weight: bold;
+}
+.new-post-modal .title-container,
+.new-post-modal .description-container{
+    margin: 35px 0;
+}
+
+.input[type="text"] {
+    border: 2px solid #d3d3d3;
+    height: 36px;
+    font-size: 14px;
+    padding: 0px 15px;
+    color: #616161;
+    box-shadow: none;
+    background-color: #ffffff;
+}
+.input{
+    border: 2px solid #d3d3d3;
+    height: 36px;
+    font-size: 14px;
+    padding: 0px 15px;
+    color: #616161;
+    box-shadow: none;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.input:focus,
+.input:active {
+    border: 2px solid #FFAD47 !important;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 10px;
+    height: 10px;
+    border: solid 2px #616161;
+    border-radius: 0px;
+    margin: 0px 10px 0px 0px;
+}

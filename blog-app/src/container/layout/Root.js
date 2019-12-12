@@ -11,7 +11,7 @@ import {Route, Router, Switch, HashRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles.css'
 import Header from "./header";
-import NewPost from "../pages/NewPost";
+import NewPost from "../newPost";
 
 const AuthRoute = ({component: Component, ...rest}) => {
 
