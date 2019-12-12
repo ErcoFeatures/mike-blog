@@ -7,6 +7,10 @@
     background-color: #FFFFFF;
     padding:0 20px;
 }
+.main-container .right-content{
+    height: 100vh;
+    overflow: auto;
+}
 .main-container .header-container{
     vertical-align: middle;
     align-items: center;
