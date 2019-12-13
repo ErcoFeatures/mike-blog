@@ -45,7 +45,7 @@ class Root extends Component {
                             <Switch>
                                 <AuthRoute pageName="Home" state={state} exact path="/" component={Home}/>
                                 <AuthRoute pageName="Sport" state={state} exact path="/sport" component={Sport}/>
-                                <AuthRoute pageName="Post" state={state} exact path="/post?:id" component={PostShow}/>
+                                <AuthRoute pageName="Post" state={state} exact path="/post/:id" component={PostShow}/>
                                 <AuthRoute pageName="Study" state={state} exact path="/study" component={Study}/>
                                 <AuthRoute pageName="Politics" state={state} exact path="/politics" component={Politics}/>
                                 <AuthRoute pageName="Various" state={state} exact path="/various" component={Various}/>

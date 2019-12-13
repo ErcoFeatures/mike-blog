@@ -9,21 +9,20 @@ export const AddPostModal = (props) => {
     return (
         <Modal containerClassName={"new-post-modal"} isModalOpen={props.show}  backDrop={true} withClose={true}
                closeFunc={props.close}>
-            <div className={"col-xs-12"}>
 
                 <div className={"col-xs-12  title-container"}>
-                    <div className={"col-xs-2 title"}>
+                    <div className={"col-xs-3 title"}>
                         {"Title : "}
                     </div>
-                    <div className={"col-xs-10"}>
+                    <div className={"col-xs-9"}>
                         <input type={"text"} className={"input"}/>
                     </div>
                 </div>
                 <div className={"col-xs-12 description-container"}>
-                    <div className={"col-xs-2 description"}>
+                    <div className={"col-xs-3 description"}>
                         {"Description :"}
                     </div>
-                    <div className={"col-xs-10"}>
+                    <div className={"col-xs-9"}>
                              <Editor/>
 
                     </div>
@@ -36,7 +35,6 @@ export const AddPostModal = (props) => {
 
                 </div>
 
-            </div>
         </Modal>
     )
 }

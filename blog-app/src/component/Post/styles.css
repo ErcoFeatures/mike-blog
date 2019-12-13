@@ -1,5 +1,9 @@
+.list-blog, .show-post{
+    margin-top: 52px;
+}
 .post-content{
     padding: 20px 0;
+    min-height: 238px;
 }
 .post-content .post-title{
     margin-bottom: 20px;

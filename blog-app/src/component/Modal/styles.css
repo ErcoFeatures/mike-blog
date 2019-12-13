@@ -10,7 +10,8 @@
     border: 2px solid #d3d3d3;
     -webkit-box-shadow: 0 1px 10px 0 #616161;
     box-shadow: 0 1px 10px 0 #616161;
-    padding: 15px;
+    width: 1030px;
+
 }
 
 .backdrop-style {

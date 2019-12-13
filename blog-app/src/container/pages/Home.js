@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {API, graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
-import {Post} from '../../component/Post'
+import Post from '../../component/Post'
+import {Loader, PulseLeader} from '../../component/Loader'
 
 
 class Home  extends Component{
@@ -35,7 +36,7 @@ class Home  extends Component{
     render(){
         if(this.state.isLoading){
             return(
-                <div>{"..."}</div>
+                <PulseLeader color={"#F7AE54"}/>
             )
         }
         return (

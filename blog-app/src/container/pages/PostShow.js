@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import {Post} from "../../component/Post";
+import Post from "../../component/Post";
+import {Loader} from "../../component/Loader";
 import {API, graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
 
-
-
+import {withRouter} from 'react-router-dom'
 
 class PostShow  extends Component {
     constructor(props) {
@@ -17,6 +17,8 @@ class PostShow  extends Component {
     }
 
     componentDidMount() {
+
+
         this.setState(prev => ({
             ...prev,
             isLoading: true,
@@ -37,11 +39,11 @@ class PostShow  extends Component {
     render() {
         if(this.state.isLoading){
             return(
-                <div>{"..."}</div>
+                <Loader/>
             )
         }
         return (
-            <div>
+            <div className={"show-post"}>
                 {this.state.post && <Post showFull={true} {...this.state.post} ></Post>}
             </div>
         )
@@ -50,4 +52,4 @@ class PostShow  extends Component {
 }
 
 
-export default PostShow
+export default withRouter(PostShow)
