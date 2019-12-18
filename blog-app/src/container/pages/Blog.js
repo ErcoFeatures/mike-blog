@@ -1,54 +1,59 @@
 import React, {Component} from 'react'
-import Post from "../../component/Post";
-import {Loader} from "../../component/Loader";
-import {API, graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
+import {PulseLeader} from "../../component/Loader";
+import Post from "../../component/Post";
 
-import {withRouter} from 'react-router-dom'
+import {API, graphqlOperation} from "aws-amplify";
 
-class PostShow  extends Component {
+
+class Blog extends Component {
     constructor(props) {
         super(props)
         this.state = {
             isLoading: false,
-            post: null
+            blog: null
         }
 
     }
 
     componentDidMount() {
-
         this.setState(prev => ({
             ...prev,
             isLoading: true,
         }));
+
+
         const {id} = this.props.match.params;
-        API.graphql(graphqlOperation(queries.getPost, {id: id})
-        ).then(post => {
-            if (post.data.getPost) {
+        API.graphql(graphqlOperation(queries.getBlog, {id: id})
+        ).then(blog => {
+            if (blog.data.getBlog) {
                 this.setState(prev => ({
                     ...prev,
                     isLoading: false,
-                    post: post.data.getPost
+                    blog: blog.data.getBlog
                 }));
             }
         })
     }
 
+
     render() {
-        if(this.state.isLoading){
-            return(
-                <Loader/>
+        if (this.state.isLoading) {
+            return (
+                <PulseLeader color={"#F7AE54"}/>
             )
         }
         return (
-            <div className={"show-post"}>
-                {this.state.post && <Post showFull={true} {...this.state.post} ></Post>}
+            <div className={"list-blog"}>
+                {
+                    this.state.blog && this.state.blog.posts.items.map(el => <Post key={el.id} blogName={this.state.blog.name} {...el}/>)
+                }
             </div>
         )
     }
 
+
 }
 
 
-export default withRouter(PostShow)
+export default Blog

@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import {getMonthByNumber, addEllipsis} from '../../utils'
-import {API, graphqlOperation} from "aws-amplify";
 import './styles.css'
 import {NavLink} from "react-router-dom";
-import * as queries from "../../graphql/queries";
-import {Loader} from "../Loader";
 
 const Post =(props) => {
     const date = new Date(props.createdAt)
@@ -20,7 +17,7 @@ const Post =(props) => {
                 <span>{" | "}</span>
                 <span> {"By "}</span> <span className={"name"}>{props.createdBy}</span>
                 <span>{" | "}</span>
-                <span className={"blog-name"}>{props.blog.name}</span>
+                <span className={"blog-name"}>{props.blogName}</span>
             </div>
 
             <div className={"post-description"}>

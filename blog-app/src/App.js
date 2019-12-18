@@ -14,8 +14,7 @@ import Root from "./container/layout/Root";
 Auth.configure(awsconfig)
 API.configure(awsconfig)
 function App() {
-  // const allblogs = API.graphql(graphqlOperation(queries.listBlogs))
-  // console.log(allblogs)
+
   // const oneBlog = API.graphql(graphqlOperation(queries.getBlog, {id:"5d6b2f24-cb41-4cc9-b7e9-90cb30128159"}))
   // console.log(oneBlog)
   //
@@ -38,8 +37,13 @@ function App() {
   //
   // const blogToUpdate = API.graphql(graphqlOperation(queries.getBlog, {id:"09f53874-7ddb-4acb-a1e8-821eae2cf939"}))
   //
-  // const etudeBlog = API.graphql(graphqlOperation(queries.listBlogs, {filter:{'name':{'eq':"Etudes"}}}))
+  const etudeBlog = API.graphql(graphqlOperation(queries.listBlogs, {filter:{'name':{'eq':"Etudes"}}}))
+    //
+    // const etudeBlog  =API.graphql(graphqlOperation(queries.listBlogs, {filter:{'name':{'eq':"Etudes"}}}))
+    console.log(etudeBlog)
 
+    // const allblogs = API.graphql(graphqlOperation(queries.listBlogs))
+    // console.log(allblogs)
   const messagesList = {
     'en': messages_en,
     'fr':messages_fr

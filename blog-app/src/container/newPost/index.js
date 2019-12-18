@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import * as queries from '../../graphql/queries'
 import * as mutations from '../../graphql/mutations'
 import Editor from "../../component/Editor";
+import {API, graphqlOperation} from "aws-amplify";
 import Modal from "../../component/Modal";
 import {Button} from "../../component/Button";
-import {AddPostModal} from '../../component/index/AddPostModal'
+import {Index} from '../../component/AddPostModal'
 
 class NewPost extends Component{
     constructor(props){
@@ -39,7 +40,7 @@ class NewPost extends Component{
         return (
             <div>
                 <Button handleClick={this.handleShowCreatePost} label={"Créer un Article"}/>
-                <AddPostModal {...this.state} close={this.close} doCreate={this.doCreate}/>
+                <Index {...this.state} close={this.close} doCreate={this.doCreate}/>
             </div>
         )
     }

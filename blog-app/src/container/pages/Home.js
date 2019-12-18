@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import {API, graphqlOperation} from "aws-amplify";
+import {graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
 import Post from '../../component/Post'
-import {Loader, PulseLeader} from '../../component/Loader'
+import {Card} from '../../component/BlogCard'
+import {PulseLeader} from '../../component/Loader'
 
 
 class Home  extends Component{
@@ -10,7 +11,7 @@ class Home  extends Component{
         super(props)
             this.state={
                 isLoading:false,
-                listPosts:[]
+                listBlog:[]
             }
 
     }
@@ -20,13 +21,13 @@ class Home  extends Component{
             isLoading:true,
         }));
 
-        API.graphql(graphqlOperation(queries.listPosts, {limit:5})
+        this.props.api.graphql(graphqlOperation(queries.listBlogs )
         ).then(list =>{
-            if(list.data.listPosts){
+            if(list.data.listBlogs){
                 this.setState (prev =>({
                     ...prev,
                     isLoading:false,
-                    listPosts:list.data.listPosts.items
+                    listBlog:list.data.listBlogs.items
                 }));
             }
         })
@@ -42,7 +43,7 @@ class Home  extends Component{
         return (
             <div className={"list-blog"}>
                 {
-                    this.state.listPosts && this.state.listPosts.map(el => <Post {...el}/>)
+                    this.state.listBlog && <Card {...this.state}/>
                 }
             </div>
         )

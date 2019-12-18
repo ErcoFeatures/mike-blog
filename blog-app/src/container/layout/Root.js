@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import Home from '../pages/Home';
 import Footer from './Footer';
-import Sport from '../pages/Sport';
-import Politics from '../pages/Politics';
+import Blog from '../pages/Blog';
 import PostShow from '../pages/PostShow';
-import Study from '../pages/Study';
-import Various from '../pages/Various';
 import LeftContent from './LeftContent';
-import {Route, Router, Switch, HashRouter} from 'react-router-dom';
+import {Route, Switch, HashRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles.css'
 import Header from "./header";
@@ -24,7 +21,7 @@ const AuthRoute = ({component: Component, ...rest}) => {
                 <div className={"col-xs-10 right-content"}>
                     <Header/>
                     <NewPost/>
-                    <Route {...rest} render={props => (<Component {...props} />)} />
+                    <Route {...rest} render={props => (<Component {...props} {...rest}/>)} />
                 </div>
             </div>
             <Footer/>
@@ -43,12 +40,9 @@ class Root extends Component {
 
                         <div>
                             <Switch>
-                                <AuthRoute pageName="Home" state={state} exact path="/" component={Home}/>
-                                <AuthRoute pageName="Sport" state={state} exact path="/sport" component={Sport}/>
-                                <AuthRoute pageName="Post" state={state} exact path="/post/:id" component={PostShow}/>
-                                <AuthRoute pageName="Study" state={state} exact path="/study" component={Study}/>
-                                <AuthRoute pageName="Politics" state={state} exact path="/politics" component={Politics}/>
-                                <AuthRoute pageName="Various" state={state} exact path="/various" component={Various}/>
+                                <AuthRoute {...this.props} pageName="Home" state={state} exact path="/" component={Home}/>
+                                <AuthRoute  {...this.props} pageName="Post" state={state} exact path="/post/:id" component={PostShow}/>
+                                <AuthRoute  {...this.props} pageName="Blog" state={state} exact path="/blog/:id" component={Blog}/>
                             </Switch>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ import {Button} from "../Button";
 import React from "react";
 import './styles.css'
 
-export const AddPostModal = (props) => {
+export const Index = (props) => {
 
     return (
         <Modal containerClassName={"new-post-modal"} isModalOpen={props.show}  backDrop={true} withClose={true}

@@ -1,32 +1,52 @@
 import React, {Component} from 'react'
-import Politics from "../pages/Politics";
 import Profile from "../../component/Profile";
 import {NavLink} from 'react-router-dom'
+import * as queries from "../../graphql/queries";
+import {API, graphqlOperation} from "aws-amplify";
+import {PulseLeader} from "../../component/Loader";
 class LeftContent extends Component{
 
     constructor(props){
         super(props)
-
+        this.state={
+            isLoading:false,
+            listBlog:[]
+        }
     }
 
+    componentDidMount() {
+        this.setState (prev =>({
+            ...prev,
+            isLoading:true,
+        }));
+
+        API.graphql(graphqlOperation(queries.listBlogs)
+        ).then(list =>{
+            if(list.data.listBlogs){
+                this.setState (prev =>({
+                    ...prev,
+                    isLoading:false,
+                    listBlog:list.data.listBlogs.items
+                }));
+            }
+        })
+    }
     render(){
-        const links= [
-            {name:"Home", path:"/"},
-            {name:"Sport", path:"sport"},
-            {name:"Politics", path:"politics"},
-            {name:"Study", path:"study"},
-            {name:"Various", path:"various"}
-        ]
+        if(this.state.isLoading){
+            return(
+                <PulseLeader color={"#F7AE54"}/>
+            )
+        }
+
         return(
             <div>
                 <Profile/>
                 <ul className={"menu"}>
-                        {
-                            links.map(el => <div className={"menu-item"} key={el.path}><NavLink activeClassName={"active"}
+                        {<NavLink activeClassName={"active"}
                                 to={{
-                                    pathname: el.path,
-                                }}> {el.name}</NavLink></div>
-                            )
+                                    pathname:  '/',
+                                }}> Home</NavLink>
+
 
                         }
                 </ul>
