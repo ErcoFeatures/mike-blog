@@ -9,6 +9,7 @@ type Post @model {
   title: String!
   description: String
   createdBy: String
+  likes:Int
   createdAt: String
   blog: Blog @connection(name: "BlogPosts")
   comments: [Comment] @connection(name: "PostComments")
@@ -18,5 +19,7 @@ type Comment @model {
   content: String
   createdAt: String
   createdBy: String
+  likes:Int
   post: Post @connection(name: "PostComments")
 }
+

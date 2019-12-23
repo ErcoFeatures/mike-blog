@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+import {withRouter} from 'react-router-dom'
 
 
 class Header  extends Component{
@@ -15,8 +16,8 @@ class Header  extends Component{
     render(){
         return (
             <div className={"header-container"}>
-                <div className={"blog-name"}>{"Sport blog"}</div>
-                <div className={"contact-me"}><i className="fa fa-envelope"></i></div>
+                <div className={"blog-name"} onClick={ () => {this.props.history.push('/')}}> <i className="icon fa fa-long-arrow-left"></i></div>
+                <div className={"contact-me"}><i className="icon fa fa-envelope"></i></div>
             </div>
         )
     }
@@ -24,4 +25,4 @@ class Header  extends Component{
 }
 
 
-export default Header
+export default withRouter(Header)

@@ -41,15 +41,7 @@ class LeftContent extends Component{
         return(
             <div>
                 <Profile/>
-                <ul className={"menu"}>
-                        {<NavLink activeClassName={"active"}
-                                to={{
-                                    pathname:  '/',
-                                }}> Home</NavLink>
 
-
-                        }
-                </ul>
             </div>
         )
     }

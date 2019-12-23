@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {getMonthByNumber, addEllipsis} from '../../utils'
 import './styles.css'
+import {Comment} from '../Comments'
 import {NavLink} from "react-router-dom";
 
 const Post =(props) => {
@@ -23,15 +24,29 @@ const Post =(props) => {
             <div className={"post-description"}>
                 {props.showFull ? props.description : addEllipsis(props.description, 400)}
             </div>
-            <div className={"number-comments"}>
-                <span>{"commentaires : (0)"}</span>
-            </div>
-            {!props.showFull && <div className={"post-footer"}>
+
+            {!props.showFull ?
+            <div className={"post-footer"}>
                 <NavLink to={{
                     pathname: "/post/" + props.id,
                 }}> {"Voir plus ..."}</NavLink>
 
-            </div>}
+            </div>
+            :
+                <div className={"number-comments"}>
+                    <span>{"commentaires : "}  <span className={"number"}> {props.comments.items.length}</span></span>
+                </div>
+            }
+
+
+            {props.showComments &&
+            <div className={"comments-section"}>
+                <div className={"comments-header"}>
+                    {"Commentaires"}
+                </div>
+                {props.comments.items.map(el => <Comment {...el}/>)}
+            </div>
+            }
         </div>
     )
 }

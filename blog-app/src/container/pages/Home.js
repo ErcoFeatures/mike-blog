@@ -32,7 +32,12 @@ class Home  extends Component{
             }
         })
     }
+    onLikeClick (){
 
+    }
+    onDislikeClick (){
+
+    }
 
     render(){
         if(this.state.isLoading){

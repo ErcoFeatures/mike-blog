@@ -5,7 +5,7 @@
     -moz-box-shadow: -11px -1px 70px -7px rgba(192,192,192,0.82);
     box-shadow: -11px -1px 70px -7px rgba(192,192,192,0.82);
     background-color: #FFFFFF;
-    padding:0 20px;
+    padding:0 40px;
 }
 .main-container .right-content{
     min-height: 512px;
@@ -24,8 +24,12 @@
 }
 .main-container .header-container .contact-me{
     float: right;
+}
+
+.main-container .header-container .icon{
     color: #FFAD47;
     font-size: 20px;
+    cursor: pointer;
 }
 
 

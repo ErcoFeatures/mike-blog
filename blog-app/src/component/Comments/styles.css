@@ -1,0 +1,26 @@
+.comment-section{
+
+}
+.comment-section .comment-header{
+    font-weight: bold;
+    font-size: 24px;
+    border-top: 1px solid #c0c0c0;
+}
+
+
+.comment-container{
+
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.comment-container, .comment-container .comment-content,.comment-container .user-interactions{
+    margin-left:25px
+}
+.comment-container .user-interactions{
+    color: #c0c0c0;
+    margin-top: 20px;
+}
+.comment-container .user-interactions .reaction-icon{
+    margin-right: 4px;
+    cursor: pointer;
+}

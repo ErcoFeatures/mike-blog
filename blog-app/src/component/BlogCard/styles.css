@@ -9,9 +9,8 @@
     min-height: 100px;
     cursor: pointer;
     float: left;
-    width: 48%;
+    width: 50%;
     padding:10px;
-    margin-left: 17px !important;
     margin-bottom: 25px;
 }
 .card-container li:first-child{

@@ -43,7 +43,7 @@ class PostShow  extends Component {
         }
         return (
             <div className={"show-post"}>
-                {this.state.post && <Post showFull={true} {...this.state.post} ></Post>}
+                {this.state.post && <Post showFull={true} {...this.state.post}  showComments={true}></Post>}
             </div>
         )
     }

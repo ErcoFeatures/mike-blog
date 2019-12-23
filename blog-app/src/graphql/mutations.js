@@ -15,6 +15,7 @@ export const createBlog = `mutation CreateBlog(
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -36,6 +37,7 @@ export const updateBlog = `mutation UpdateBlog(
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -57,6 +59,7 @@ export const deleteBlog = `mutation DeleteBlog(
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -73,6 +76,7 @@ export const createPost = `mutation CreatePost(
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -88,6 +92,7 @@ export const createPost = `mutation CreatePost(
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -103,6 +108,7 @@ export const updatePost = `mutation UpdatePost(
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -118,6 +124,7 @@ export const updatePost = `mutation UpdatePost(
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -133,6 +140,7 @@ export const deletePost = `mutation DeletePost(
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -148,6 +156,7 @@ export const deletePost = `mutation DeletePost(
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -163,11 +172,13 @@ export const createComment = `mutation CreateComment(
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id
@@ -190,11 +201,13 @@ export const updateComment = `mutation UpdateComment(
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id
@@ -217,11 +230,13 @@ export const deleteComment = `mutation DeleteComment(
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id

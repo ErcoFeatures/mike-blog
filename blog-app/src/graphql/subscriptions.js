@@ -12,6 +12,7 @@ export const onCreateBlog = `subscription OnCreateBlog {
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -30,6 +31,7 @@ export const onUpdateBlog = `subscription OnUpdateBlog {
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -48,6 +50,7 @@ export const onDeleteBlog = `subscription OnDeleteBlog {
         title
         description
         createdBy
+        likes
         createdAt
       }
       nextToken
@@ -61,6 +64,7 @@ export const onCreatePost = `subscription OnCreatePost {
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -76,6 +80,7 @@ export const onCreatePost = `subscription OnCreatePost {
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -88,6 +93,7 @@ export const onUpdatePost = `subscription OnUpdatePost {
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -103,6 +109,7 @@ export const onUpdatePost = `subscription OnUpdatePost {
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -115,6 +122,7 @@ export const onDeletePost = `subscription OnDeletePost {
     title
     description
     createdBy
+    likes
     createdAt
     blog {
       id
@@ -130,6 +138,7 @@ export const onDeletePost = `subscription OnDeletePost {
         content
         createdAt
         createdBy
+        likes
       }
       nextToken
     }
@@ -142,11 +151,13 @@ export const onCreateComment = `subscription OnCreateComment {
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id
@@ -166,11 +177,13 @@ export const onUpdateComment = `subscription OnUpdateComment {
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id
@@ -190,11 +203,13 @@ export const onDeleteComment = `subscription OnDeleteComment {
     content
     createdAt
     createdBy
+    likes
     post {
       id
       title
       description
       createdBy
+      likes
       createdAt
       blog {
         id
