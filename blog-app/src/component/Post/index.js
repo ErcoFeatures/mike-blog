@@ -44,7 +44,7 @@ const Post =(props) => {
                 <div className={"comments-header"}>
                     {"Commentaires"}
                 </div>
-                {props.comments.items.map(el => <Comment {...el}/>)}
+                {props.comments.items.map((el,index) => <Comment key={index} {...el}/>)}
             </div>
             }
         </div>
