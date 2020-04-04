@@ -1,20 +1,17 @@
 import React, {Component} from 'react'
 import {ListBlog} from "../listBlog";
 
-class Home  extends Component{
-    constructor(props){
-        super(props)
+class Home extends Component {
+
+    onLikeClick() {
 
     }
 
-    onLikeClick (){
-
-    }
-    onDislikeClick (){
+    onDislikeClick() {
 
     }
 
-    render(){
+    render() {
         return (
             <div className={"list-blog"}>
                 {

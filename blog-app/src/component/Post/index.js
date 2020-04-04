@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {getMonthByNumber, addEllipsis} from '../../utils'
 import './styles.css'
 import {Comment} from '../Comments'

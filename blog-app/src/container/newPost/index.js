@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import * as queries from '../../graphql/queries'
 import * as mutations from '../../graphql/mutations'
 import {API, graphqlOperation} from "aws-amplify";
-import Modal from "../../component/Modal";
 import {Button} from "../../component/Button";
 import ReactQuill from "react-quill";
 import './styles.css'

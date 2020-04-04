@@ -4,9 +4,6 @@ import {NavLink} from "react-router-dom";
 
 export const AddPostButton = (props) => {
 
-    const handleClick= () =>{
-
-    }
     return (
         <NavLink to ={{
             pathname:  '/new/',

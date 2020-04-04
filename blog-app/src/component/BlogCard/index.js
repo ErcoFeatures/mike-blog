@@ -4,10 +4,8 @@ import './styles.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFutbol, faGraduationCap, faBullhorn, faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 import {NavLink} from "react-router-dom";
-import MyContext from "../../MyContext";
 import {API, graphqlOperation} from "aws-amplify";
 import * as queries from "../../graphql/queries";
-import {Loader} from "../Loader";
 
 
 const icons = {
