@@ -8,7 +8,6 @@ import {Route, Switch, HashRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles.css'
 import Header from "./header";
-import {AddPostButton} from '../../component/AddPostCTAButton'
 import NewPost from "../newPost";
 
 const AuthRoute = ({component: Component, ...rest}) => {
@@ -21,7 +20,6 @@ const AuthRoute = ({component: Component, ...rest}) => {
                 </div>
                 <div className={"col-xs-10 right-content"}>
                     <Header/>
-                    <AddPostButton/>
                     <Route {...rest} render={props => (<Component {...props} {...rest}/>)} />
                 </div>
             </div>
