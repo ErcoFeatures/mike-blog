@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './styles.css'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFutbol, faGraduationCap, faBullhorn, faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 import {NavLink} from "react-router-dom";
+import MyContext from "../../MyContext";
+import {API, graphqlOperation} from "aws-amplify";
+import * as queries from "../../graphql/queries";
+import {Loader} from "../Loader";
 
 
 const icons = {
@@ -14,34 +18,66 @@ const icons = {
 };
 
 
-export const Card = (props) => {
+class Card extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isLoading: true,
+            blog: null
+        }
 
-    return (
-        <ul className={"card-container "}>
+    }
 
-            {props.listBlog.map(el =>
-                <NavLink to ={{
-                    pathname:  '/blog/' + el.id ,
-                }}>
-                <li className={"blog-item card"}>
-                    <div className={"left-contain"}>
-                        <div className={"card-type"}> {el.name}</div>
-                        <div className={"posts-number"}>{" 0 posts"}</div>
-                    </div>
+    componentDidMount() {
+        this.setState(prev => ({
+            ...prev,
+            isLoading: true,
+        }));
 
-                    <div className={"right-contain"}>
-                        <div className={"blog-icon"}><FontAwesomeIcon icon={icons[el.name]}/></div>
-                    </div>
-
-                    <div className={"author"}>
-                        <span>{"Ecrit par "}<span className={"name"}>{"Mike"}</span></span>
-                    </div>
-                </li>
-                </NavLink>
-            )
-
+    debugger
+        const id = this.props.id;
+        API.graphql(graphqlOperation(queries.getBlog, {id: id})
+        ).then(blog => {
+            if (blog.data.getBlog) {
+                this.setState(prev => ({
+                    ...prev,
+                    isLoading: false,
+                    blog: blog.data.getBlog
+                }));
             }
+        })
+    }
 
-        </ul>
-    )
+    render() {
+          const {blog} =this.state;
+        // if(this.state.isLoading){
+        //     return
+        // }
+        return (
+            <div>
+                {blog && <NavLink to={{
+                    pathname: '/blog/' + blog.id,
+                }}>
+                    <li className={"blog-item card"}>
+                        <div className={"left-contain"}>
+                            <div className={"card-type"}> {blog.name}</div>
+                            <div className={"posts-number"}>{blog.posts.items.length + " Article" + (blog.posts.items.length >1 ?"s":"")}</div>
+                        </div>
+
+                        <div className={"right-contain"}>
+                            <div className={"blog-icon"}><FontAwesomeIcon icon={icons[blog.name]}/>
+                            </div>
+                        </div>
+
+                        <div className={"author"}>
+                            <span>{"Ecrit par "}<span className={"name"}>{"Mike"}</span></span>
+                        </div>
+                    </li>
+                </NavLink>
+                }
+            </div>
+        )
+    }
 }
+
+export default Card

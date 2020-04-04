@@ -71,3 +71,13 @@ img {
 .container {
     padding: 2px 16px;
 }
+
+.blog-loader{
+    display: inline;
+    min-height: 100px;
+    cursor: pointer;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 25px;
+}

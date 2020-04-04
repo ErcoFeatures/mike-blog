@@ -6,8 +6,8 @@ import {NavLink} from "react-router-dom";
 
 const Post =(props) => {
     const date = new Date(props.createdAt)
-    const publishAt = getMonthByNumber(date.getDate()) + " " + (date.getMonth() + 1) + " " + date.getFullYear();
-
+    const publishAt = date.getDate() + " " + getMonthByNumber(date.getMonth()) + " " + date.getFullYear();
+    const description =  props.showFull ? props.description : addEllipsis(props.description, 400)
     return (
         <div className={"post-content"}>
             <div className={"post-title"}>
@@ -22,7 +22,7 @@ const Post =(props) => {
             </div>
 
             <div className={"post-description"}>
-                {props.showFull ? props.description : addEllipsis(props.description, 400)}
+                <div dangerouslySetInnerHTML={{ __html: description }} />
             </div>
 
             {!props.showFull ?

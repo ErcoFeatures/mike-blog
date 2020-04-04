@@ -6,118 +6,151 @@ import Modal from "../../component/Modal";
 import {Button} from "../../component/Button";
 import ReactQuill from "react-quill";
 import './styles.css'
-class NewPost extends Component{
-    constructor(props){
+import MyContext from "../../MyContext";
+
+class NewPost extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-            show:false,
-            title:"",
-            description:"",
-            blog:""
+        this.state = {
+            title: "",
+            description: "",
+            blog: null,
+            inputError: null
         };
         this.handleShowCreatePost = this.handleShowCreatePost.bind(this);
         this.doCreate = this.doCreate.bind(this);
-        this.close = this.close.bind(this);
+        this.clear = this.clear.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onSelectBlog = this.onSelectBlog.bind(this);
         this.onDescriptionChange = this.onDescriptionChange.bind(this);
     }
 
-    handleShowCreatePost(){
+    handleShowCreatePost() {
         this.setState(prev => ({
             ...prev,
-            show: !prev.show
+            title: "",
+            description: "",
+            inputError: false
         }))
     }
-    close(){
+
+    clear() {
         this.setState(prev => ({
             ...prev,
-            show: false
-        }))
-    }
-    doCreate(){
-        let {title, description, blog} = this.state
-        API.graphql(graphqlOperation(mutations.createPost, {
-            input:{
-                title ,
-                createdBy:"Mike",
-                description,
-                postBlogId:blog
-            }
+            title: "",
+            description: "",
+            inputError: false,
         }))
 
     }
-    onSelectBlog(val){
-        this.setState(prev =>({
-            ...prev,
-            blog:val
-        }))
+
+
+    doCreate() {
+
+        console.log("here");
+        let {title, description, blog} = this.state;
+        let currentDate = new Date();
+        const ISODate = currentDate.toISOString()
+        this.setState({
+            inputError: title === "" || description === "" || blog === null
+        }, () => {
+            if (!this.state.inputError)
+                API.graphql(graphqlOperation(mutations.createPost, {
+                    input: {
+                        title,
+                        createdBy: "Mike",
+                        createdAt: ISODate,
+                        description,
+                        postBlogId: blog.id,
+
+                    }
+                }))
+        })
     }
-    onTitleChange(val){
-        this.setState(prev =>({
+
+    onSelectBlog(blog) {
+        this.setState(prev => ({
             ...prev,
-            title:val
+            blog: blog
         }))
     }
 
-    onDescriptionChange(val){
-        this.setState(prev =>({
+    onTitleChange(val) {
+        this.setState(prev => ({
             ...prev,
-            description:val
+            title: val
         }))
     }
 
-    render (){
-        const option = ["Divers", "Sport", "Politique", "Etudes"]
+    onDescriptionChange(val) {
+        this.setState(prev => ({
+            ...prev,
+            description: val
+        }))
+    }
+
+    render() {
+        const option = ["Divers", "Sport", "Politique", "Etudes"];
         return (
-            <div>
-                <Button handleClick={this.handleShowCreatePost} label={"Créer un Article"}/>
-                <Modal containerClassName={"new-post-modal"} isModalOpen={this.state.show} backDrop={true} withClose={true}
-                       closeFunc={this.close}>
+            <MyContext.Consumer>
 
-                    <div className={"col-xs-12  title-container"}>
-                        <div className={"col-xs-3 title"}>
-                            {"Title : "}
-                        </div>
-                        <div className={"col-xs-9"}>
-                            <input type={"text"} className={"input"} onChange={ e => this.onTitleChange(e.target.value)}/>
-                        </div>
-                    </div>
-                    <div className={" col-xs-12 which-blog"}>
-                        <div className={"col-xs-3 title"}>
-                            {"Blog : "}
-                        </div>
-                        <div className={"col-xs-9"}>
-                            <select className={"input"} onChange={e => this.onSelectBlog (e.target.value)}>
-                                {option.map(el =><option key={el}>
-                                        {el}
-                                    </option>
-                                )}
-                            </select>
-                        </div>
+                {
+                    context => (
+                        <div className={"new-post-container"}>
 
-                    </div>
-                    <div className={"col-xs-12 description-container"}>
-                        <div className={"col-xs-3 title"}>
-                            {"Description :"}
-                        </div>
-                        <div className={"col-xs-9"}>
-                            <ReactQuill value={this.state.description}
-                                        onChange={this.onDescriptionChange}
-                            />
+                            {this.state.inputError && <div className={"col-xs-12  error"}>
+                                <span>{"Fill all mandatory fields"}</span>
+                            </div>
+                            }
+                            <div className={"col-xs-12  no-padding title-container"}>
+                                <div className={"col-xs-3  no-padding title"}>
+                                    {"Title : *"}
+                                </div>
+                                <div className={"col-xs-9 no-padding"}>
+                                    <input type={"text"} value={this.state.title} className={"input"}
+                                           onChange={e => this.onTitleChange(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className={" col-xs-12 no-padding which-blog"}>
+                                <div className={"col-xs-3  no-padding title"}>
+                                    {"Blog : *"}
+                                </div>
+                                <div className={"col-xs-9 no-padding"}>
+                                    <select className={"input"} onChange={e => this.onSelectBlog( context.getBlogByName(e.target.value))}>
+                                        <option value="" disabled selected>Select a blog</option>
+                                        {option.map(el => <option key={el}>
+                                                {el}
+                                            </option>
+                                        )}
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div className={"col-xs-12  no-padding description-container"}>
+                                <div className={"col-xs-3 no-padding title"}>
+                                    {"Description : *"}
+                                </div>
+                                <div className={"col-xs-9 no-padding"}>
+                                    <ReactQuill value={this.state.description}
+                                                onChange={this.onDescriptionChange}
+                                    />
+
+                                </div>
+                            </div>
+                            <div className={"col-xs-12  no-padding  bottom-buttons"}>
+                                <div className={"col-xs-3  no-padding col-xs-offset-9"}>
+                                    <Button classStyle={"add"} handleClick={this.doCreate} label={"Add"}/>
+                                    <Button classStyle={"cancel"} handleClick={this.clear} label={"Clear"}/>
+                                </div>
+
+                            </div>
 
                         </div>
-                    </div>
-                    <div className={"col-xs-12 bottom-buttons"}>
-                        <div className={"col-xs-3 col-xs-offset-9"}>
-                            <Button classStyle={"add"} handleClick={this.doCreate} label={"Add"}/>
-                            <Button classStyle={"cancel"} handleClick={this.close} label={"Cancel"}/>
-                        </div>
+                    )
 
-                    </div>
+                }
 
-                </Modal>
-            </div>
+            </MyContext.Consumer>
         )
     }
 }

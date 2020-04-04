@@ -9,7 +9,6 @@ JavascriptTimeAgo.locale(fr)
 export const Comment = (props) => {
 
     const date = new Date(props.createdAt)
-    debugger;
     const publishAt = (date.getDate())+ " " + getMonthByNumber((date.getMonth() )) + " " + date.getFullYear() + " " + date.getHours()+ ":" + date.getMinutes()
 
     return (
