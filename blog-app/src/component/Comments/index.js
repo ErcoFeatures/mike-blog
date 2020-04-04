@@ -1,15 +1,13 @@
 import React from 'react'
 import './styles.css'
-import {getMonthByNumber} from "../../utils";
 import fr from 'javascript-time-ago/locale/fr'
 import JavascriptTimeAgo from 'javascript-time-ago'
 import ReactTimeAgo from 'react-time-ago'
-// Initialize the desired locales.
 JavascriptTimeAgo.locale(fr)
 export const Comment = (props) => {
 
     const date = new Date(props.createdAt)
-    const publishAt = (date.getDate())+ " " + getMonthByNumber((date.getMonth() )) + " " + date.getFullYear() + " " + date.getHours()+ ":" + date.getMinutes()
+    // const publishAt = (date.getDate())+ " " + getMonthByNumber((date.getMonth() )) + " " + date.getFullYear() + " " + date.getHours()+ ":" + date.getMinutes()
 
     return (
         <div className={"comment-container"}>

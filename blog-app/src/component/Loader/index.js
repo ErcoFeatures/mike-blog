@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './styles.css'
-import { PulseLoader } from 'react-spinners';
+import {PulseLoader} from 'react-spinners';
 import PropTypes from 'prop-types';
 
 
@@ -18,15 +18,8 @@ export const Loader = (props) => (
     </div>
 );
 
+export class PulseLeader extends Component {
 
-
-
-
-
-export  class PulseLeader extends Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (
@@ -43,13 +36,13 @@ export  class PulseLeader extends Component {
 }
 
 Loader.propTypes = {
-    size : PropTypes.number,
-    color : PropTypes.string,
-    betweenSpace : PropTypes.string
+    size: PropTypes.number,
+    color: PropTypes.string,
+    betweenSpace: PropTypes.string
 };
 
 Loader.defaultProps = {
     betweenSpace: "2px",
-    color : '#ff540a',
-    size : 15
+    color: '#ff540a',
+    size: 15
 };

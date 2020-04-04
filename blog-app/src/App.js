@@ -1,12 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Auth, API, graphqlOperation} from 'aws-amplify'
 import awsconfig from './aws-exports'
 import * as queries from './graphql/queries'
-import * as mutations from './graphql/mutations'
 import {withAuthenticator} from "aws-amplify-react";
-import {IntlProvider, addLocaleData} from 'react-intl';
+import {IntlProvider} from 'react-intl';
 import messages_en from "./Localization/en.json";
 import messages_fr from "./Localization/fr.json";
 import Root from "./container/layout/Root";

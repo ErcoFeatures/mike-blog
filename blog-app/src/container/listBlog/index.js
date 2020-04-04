@@ -1,18 +1,15 @@
 import React from 'react'
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faFutbol, faGraduationCap, faBullhorn, faCircleNotch} from '@fortawesome/free-solid-svg-icons'
-import {NavLink} from "react-router-dom";
+// import {faFutbol, faGraduationCap, faBullhorn, faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 import MyContext from "../../MyContext";
 import Card from '../../component/BlogCard'
 
 
-const icons = {
-    Etudes: faGraduationCap,
-    Sport: faFutbol,
-    Divers: faCircleNotch,
-    Politique: faBullhorn
-};
+// const icons = {
+//     Etudes: faGraduationCap,
+//     Sport: faFutbol,
+//     Divers: faCircleNotch,
+//     Politique: faBullhorn
+// };
 
 
 export const ListBlog = (props) => {
@@ -26,7 +23,7 @@ export const ListBlog = (props) => {
                         <ul className={"card-container "}>
 
                             {context.blogList.map(el =>
-                                <Card {...el}/>
+                                <Card key={el.id} {...el}/>
                             )
                             }
                         </ul>
