@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {ListBlog} from "../listBlog";
-import Header from "../layout/header";
 import {AddPostButton} from "../../component/AddPostCTAButton";
 
 class Home extends Component {

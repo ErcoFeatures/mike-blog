@@ -20,6 +20,7 @@ type Comment @model {
   createdAt: String
   createdBy: String
   likes:Int
+  dislikes:Int
   post: Post @connection(name: "PostComments")
 }
 
