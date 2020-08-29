@@ -1,5 +1,12 @@
-.comment-section{
+.comments-section{
+    position :relative;
+    display: grid;
+}
 
+.comments-section .comments-header{
+    font-weight: bold;
+    font-size: 24px;
+    border-top: 1px solid #c0c0c0;
 }
 .comment-section .comment-header{
     font-weight: bold;
@@ -9,7 +16,6 @@
 
 
 .comment-container{
-
     border-bottom: 1px solid #c0c0c0;
 }
 
@@ -23,4 +29,9 @@
 .comment-container .user-interactions .reaction-icon{
     margin-right: 4px;
     cursor: pointer;
+}
+.new-comment-container textarea {
+    width: 100%;
+    margin:10px 0;
+    min-height: 50px;
 }

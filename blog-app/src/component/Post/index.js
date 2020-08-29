@@ -3,6 +3,7 @@ import {getMonthByNumber, addEllipsis} from '../../utils'
 import './styles.css'
 import {Comment} from '../Comments'
 import {NavLink} from "react-router-dom";
+import NewComment from "../../container/newComment";
 
 const Post =(props) => {
     const date = new Date(props.createdAt)
@@ -38,15 +39,16 @@ const Post =(props) => {
                 </div>
             }
 
-
             {props.showComments &&
             <div className={"comments-section"}>
+                <NewComment postId={props.id}/>
                 <div className={"comments-header"}>
                     {"Commentaires"}
                 </div>
                 {props.comments.items.map((el,index) => <Comment key={index} {...el}/>)}
             </div>
             }
+
         </div>
     )
 }
